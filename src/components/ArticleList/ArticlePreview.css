@@ -1,0 +1,13 @@
+.container {
+    padding: 15px;
+    margin: 10px 0;
+    border-bottom: solid 1px #357df4;
+}
+
+.info {
+    display: flex;
+}
+
+.author {
+    margin-right: 30px;
+}
