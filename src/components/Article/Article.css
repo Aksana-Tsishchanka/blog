@@ -1,39 +1,91 @@
 .container {
-    padding: 2% 5%;
-    background-color: rgba(211, 211, 211, 0.3);;
+    padding: 60px 2% 5%;
+    background-color: rgba(112,128,144, 0.1);
 }
 
 .article {
+    box-shadow: 0 1px 7px rgba(0,0,0,0.2);
+    max-width: 1000px;
 }
 
 .infoContainer {
     display: flex;
     align-items: center;
-    border-bottom: solid 2px white;
+    border: solid 2px white;
+    background-color: rgba(175,238,238, 0.2);
 }
 
 .content {
-    max-width: 800px;
+    max-width: 1000px;
     padding:  2% 5%;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.avatar {
+    max-width: 100%;
+    border: solid 2px white;
+}
+.info {
+    margin-left: 2%;
+    font-size: 20px;
 }
 
 .imgContainer {
     display: flex;
-    padding: 1%;
+    padding:  2% 5%;
 }
 
 .img {
     max-width: 100%;
-    margin: auto;
+    border: solid 3px white;
 }
 
 .title {
     color: black;
     font-size: 2em;
-    margin: 2% 0;
+    margin: 0;
 }
 
 .time {
-
+    color: #778899;
+    font-style: italic;
 }
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    font-size: 25px;
+    padding-left: 2%;
+    line-height: 2;
+    background-color: rgba(175,238,238, 0.2);
+    border-top: solid 2px white;
+}
+
+.iconContainer, .iconHomeContainer {
+    font-size: 18px;
+    color: black;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+}
+
+.iconContainer:hover {
+    color: #8B0000;
+    transform: scale(2);
+}
+
+.iconHomeContainer:hover {
+    color: grey;
+}
+
+.likesContainer {
+    display: flex;
+    align-items: center;
+}
+
+.link:link, .link:visited, .link:hover, .link:active {
+    text-decoration: none;
+    color: black;
+}
+
 

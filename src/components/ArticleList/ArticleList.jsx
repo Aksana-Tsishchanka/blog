@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Article from './ArticlePreview';
 import TagCloud from '../TagCloud/TagCloud';
+import style from './ArticleList.css';
 
 export default class ArticleList extends Component {
   static propTypes = {
@@ -53,20 +54,20 @@ export default class ArticleList extends Component {
   render() {
     const { articles } = this.props;
     return (
-      <div className="container">
-        <div>
+      <div className={style.container}>
+          <div className={style.tagContainer}>
+              <TagCloud
+                  tags={this.getPossibleTags(articles)}
+                  tagHandler={this.onFilterArticles}
+              />
+          </div>
+          <div className={style.previewContainer}>
           { !this.state.filterTag ?
-            this.createArticle(articles)
-            :
-            this.createFilterArticle(articles)
-          }
-        </div>
-        <div className="tagContainer">
-          <TagCloud
-            tags={this.getPossibleTags(articles)}
-            tagHandler={this.onFilterArticles}
-          />
-        </div>
+                this.createArticle(articles)
+                :
+                this.createFilterArticle(articles)
+              }
+          </div>
       </div>
     );
   }

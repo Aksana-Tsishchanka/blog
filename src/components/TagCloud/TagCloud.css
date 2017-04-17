@@ -1,3 +1,38 @@
-.item {
-    font-size: 0.8rem;
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
 }
+
+@media only screen and (max-device-width: 480px) {
+    .container {
+        flex-direction: column;
+        align-items: center;
+    }
+    .titleTag {
+        text-align: center;
+    }
+}
+
+
+.item {
+    font-size: 20px;
+    background: none;
+    border: none;
+    margin-right: 10px;
+    color: #008B8B;
+    text-decoration: underline;
+    flex-basis: 30%;
+    flex-grow: 1;
+}
+
+.item:hover {
+    text-decoration: none;
+}
+
+.titleTag {
+    font-size: 25px;
+    color: grey;
+    margin: 5px;
+}
+

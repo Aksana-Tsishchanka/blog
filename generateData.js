@@ -46,7 +46,7 @@ function createTags(arrayOfPossibleTags, arrayOfUniqId, numberOfTag) {
 function generateContent() {
   return `<div>
     <em>${faker.Company.catchPhrase()}</em>
-    <div>${faker.Lorem.paragraphs(30)}</div>
+    <div>${faker.Lorem.paragraphs(25)}</div>
     </div>`.replace(/\s+/g, ' ');
 }
 
@@ -66,7 +66,7 @@ function generateArticles(numberOfArticles) {
       modifDate: faker.Date.future(1),
       tags: createTags(tags, generateArrayOfUniqNumbers(numOfTags, tags.length - 1), numOfTags),
       author: faker.Name.findName(),
-      likeCounter: faker.random.number(1, 1000),
+      likeCounter: faker.random.number(10, 100) * 1000,
       content: generateContent(),
     };
     object.articles.push(article);

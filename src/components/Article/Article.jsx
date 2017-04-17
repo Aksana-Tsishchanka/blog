@@ -1,7 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router';
 import style from './Article.css';
 import * as calculateDateFrom from '../../utils/calculateDateFrom';
-
+import ScrollableBar from '../ScrollableBar/ScrollableBar';
+import Icon from '../Icon/Icon';
+import formatNumber from '../../utils/formatNumber';
 
 const Article = (props) => {
   const { author, pubDate, coverImage, title, content, likeCounter, avatar } = props;
@@ -27,9 +30,23 @@ const Article = (props) => {
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </article>
       </main>
-      <footer>
-        { likeCounter }
-      </footer>
+        <ScrollableBar place="bottom">
+            <footer className={style.footer }>
+                <div className={style.likesContainer}>
+                    <div className={style.iconContainer}>
+                        <Icon type="likes" />
+                    </div>
+                    { formatNumber(likeCounter) } likes
+                </div>
+                <div className={style.homeContainer}>
+                    <Link to='/' className={style.link}>
+                        <div className={style.iconHomeContainer}>
+                            <Icon type="home" /> Choose another article
+                        </div>
+                    </Link>
+                </div>
+            </footer>
+        </ScrollableBar>
     </div>
   );
 };

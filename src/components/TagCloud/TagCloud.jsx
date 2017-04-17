@@ -44,9 +44,12 @@ export default class TagCloud extends Component {
   render() {
     const { tags } = this.props;
     return (
-      <div className="container">
-        { this.createCloudTag(tags, this.onClickHandle) }
-      </div>
+        <div>
+            <h2 className={style.titleTag}>Search by tag: </h2>
+            <div className={style.container}>
+                { this.createCloudTag(tags, this.onClickHandle) }
+            </div>
+        </div>
     );
   }
 }

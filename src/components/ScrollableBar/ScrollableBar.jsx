@@ -7,7 +7,8 @@ export default class ScrollableBar extends Component {
     super(props);
 
     this.state = {
-      isHide: false,
+        isHide: false,
+        place: props.place || 'top',
     };
   }
 
@@ -30,10 +31,11 @@ export default class ScrollableBar extends Component {
   }
 
   render() {
-    const classHide = this.state.isHide ? 'hide' : '';
+      const { isHide, place } = this.state;
+    const classHide = isHide ? 'hide' : '';
     return (
-      <div className={`${style.bar}${classHide ? ` ${style.hide}` : ''}`}>
-        topbar
+      <div className={`${style.bar} ${style[place]} ${classHide ? ` ${style.hide}` : ''}`}>
+          { this.props.children }
       </div>
     );
   }
