@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { Link } from 'react-router';
 import style from './Article.css';
 import * as calculateDateFrom from '../../utils/calculateDateFrom';
@@ -30,25 +30,46 @@ const Article = (props) => {
           <div dangerouslySetInnerHTML={{ __html: content }} />
         </article>
       </main>
-        <ScrollableBar place="bottom">
-            <footer className={style.footer }>
-                <div className={style.likesContainer}>
-                    <div className={style.iconContainer}>
-                        <Icon type="likes" />
-                    </div>
-                    { formatNumber(likeCounter) } likes
-                </div>
-                <div className={style.homeContainer}>
-                    <Link to='/' className={style.link}>
-                        <div className={style.iconHomeContainer}>
-                            <Icon type="home" /> Choose another article
-                        </div>
-                    </Link>
-                </div>
-            </footer>
-        </ScrollableBar>
+      <ScrollableBar place="bottom">
+        <footer className={style.footer}>
+          <div className={style.likesContainer}>
+            <div className={style.iconContainer}>
+              <Icon type="likes" />
+            </div>
+            { formatNumber(likeCounter) } likes
+          </div>
+          <div className={style.homeContainer}>
+            <Link to="/" className={style.link}>
+              <div className={style.iconHomeContainer}>
+                <Icon type="home" /> Choose another article
+              </div>
+            </Link>
+          </div>
+        </footer>
+      </ScrollableBar>
     </div>
   );
+};
+
+
+Article.defaultProps = {
+  author: '',
+  pubDate: '',
+  coverImage: '',
+  title: '',
+  content: '',
+  likeCounter: 0,
+  avatar: '',
+};
+
+Article.propTypes = {
+  author: PropTypes.string.isRequired,
+  pubDate: PropTypes.string,
+  coverImage: PropTypes.string,
+  title: PropTypes.string,
+  content: PropTypes.string,
+  likeCounter: PropTypes.number,
+  avatar: PropTypes.string,
 };
 
 export default Article;

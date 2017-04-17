@@ -9,7 +9,7 @@
     "start:json": "json-server --watch db.json",
     "start": "node index.js",
     "run": "concurrently \"npm run start:dev\" \"npm run start\"",
-    "mock": "node generateData.js 5",
+    "mock": "node generateData.js 15",
     "setup": "npm run mock && npm run run"
   },
   "repository": {

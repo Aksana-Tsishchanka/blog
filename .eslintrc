@@ -10,7 +10,8 @@
     "no-use-before-define": ["error", { "functions": true, "classes": true }],
     "no-param-reassign": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }]
+    "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+    "no-extra-boolean-cast": "off"
   },
   "globals": {
     "document": true,

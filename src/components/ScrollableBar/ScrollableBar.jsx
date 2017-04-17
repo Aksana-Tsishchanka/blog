@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import style from './ScrollableBar.css';
 
 export default class ScrollableBar extends Component {
+  static propTypes = {
+    children: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
+      PropTypes.element,
+    ]),
+    place: PropTypes.string,
+  };
+  static defaultProps = {
+    children: null,
+    place: 'top',
+  };
 
   constructor(props) {
     super(props);
 
     this.state = {
-        isHide: false,
-        place: props.place || 'top',
+      isHide: false,
+      place: props.place || 'top',
     };
   }
-
-  hideBar = () => {
-    let { isHide } = this.state;
-
-    window.scrollY > this.prev ?
-      !isHide && this.setState({ isHide: true })
-      :
-      isHide && this.setState({ isHide: false });
-    this.prev = window.scrollY;
-  };
 
   componentDidMount() {
     window.addEventListener('scroll', this.hideBar);
@@ -30,12 +32,22 @@ export default class ScrollableBar extends Component {
     window.removeEventListener('scroll', this.hideBar);
   }
 
+  hideBar = () => {
+    const { isHide } = this.state;
+    if (window.scrollY > this.prev) {
+      this.setState({ isHide: true });
+    } else if (isHide) {
+      this.setState({ isHide: false });
+    }
+    this.prev = window.scrollY;
+  };
+
   render() {
-      const { isHide, place } = this.state;
+    const { isHide, place } = this.state;
     const classHide = isHide ? 'hide' : '';
     return (
       <div className={`${style.bar} ${style[place]} ${classHide ? ` ${style.hide}` : ''}`}>
-          { this.props.children }
+        {this.props.children}
       </div>
     );
   }

@@ -5,22 +5,23 @@ import ScrollableBar from '../ScrollableBar/ScrollableBar';
 
 const App = props => (
   <div>
-      <ScrollableBar>
-          <header className={style.header}>
-              <Link to="/" className={style.link}>Awesome blog</Link>
-          </header>
-      </ScrollableBar>
+    <ScrollableBar>
+      <header className={style.header}>
+        <Link to="/" className={style.link}>Awesome blog</Link>
+      </header>
+    </ScrollableBar>
     { props.children }
   </div>
 );
 
 App.defaultProps = {
-  children: null,
+  children: '',
 };
 
 App.propTypes = {
-  children: PropTypes.arrayOf([
-    PropTypes.component,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.string,
   ]),
 };
 

@@ -10,10 +10,10 @@ export default class ArticleList extends Component {
       PropTypes.object,
       PropTypes.element,
     ]),
-  }
+  };
   static defaultProps = {
     articles: [],
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -55,19 +55,19 @@ export default class ArticleList extends Component {
     const { articles } = this.props;
     return (
       <div className={style.container}>
-          <div className={style.tagContainer}>
-              <TagCloud
-                  tags={this.getPossibleTags(articles)}
-                  tagHandler={this.onFilterArticles}
-              />
-          </div>
-          <div className={style.previewContainer}>
+        <div className={style.tagContainer}>
+          <TagCloud
+            tags={this.getPossibleTags(articles)}
+            tagHandler={this.onFilterArticles}
+          />
+        </div>
+        <div className={style.previewContainer}>
           { !this.state.filterTag ?
                 this.createArticle(articles)
                 :
                 this.createFilterArticle(articles)
               }
-          </div>
+        </div>
       </div>
     );
   }

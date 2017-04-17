@@ -1,9 +1,18 @@
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import Article from './Article';
 import sendRequest from '../../api/api';
 
 
 export default class ArticleContainer extends Component {
+  static propTypes = {
+    params: PropTypes.oneOfType([
+      PropTypes.object,
+    ]),
+  }
+  static defaultProps = {
+    params: {},
+  }
+
   constructor(props) {
     super();
 
@@ -17,7 +26,7 @@ export default class ArticleContainer extends Component {
     sendRequest(`articles?slug=${this.state.slug}`)
       .then(response => this.setState({
         article: response[0],
-        }),
+      }),
       );
   }
 
@@ -28,7 +37,7 @@ export default class ArticleContainer extends Component {
         {this.state.article ?
           <Article {...article} />
           :
-          'Article not found'
+          <div style={{ margin: '50px' }}>Article not found</div>
         }
       </div>);
   }
