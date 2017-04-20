@@ -9,17 +9,30 @@ class ArticleListContainer extends Component {
 
     this.state = {
       articles: [],
+      tags: [],
     };
   }
 
   componentDidMount() {
     sendRequest('articles?_limit=100')
-      .then(response => this.setState({ articles: response }),
+      .then(response => this.setState({
+        articles: response,
+        tags: this.getPossibleTags(response),
+      }),
       );
   }
 
+  getPossibleTags = (articles) => {
+    const tagsList = [];
+    articles.forEach((el) => {
+      tagsList.push(...el.tags);
+    });
+    return [...new Set(tagsList)];
+  };
+
   render() {
-    return (<ArticleList articles={this.state.articles} />);
+    const { articles, tags } = this.state;
+    return (<ArticleList articles={articles} tags={tags} />);
   }
 }
 

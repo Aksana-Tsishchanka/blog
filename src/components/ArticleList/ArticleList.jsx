@@ -10,9 +10,15 @@ export default class ArticleList extends Component {
       PropTypes.object,
       PropTypes.element,
     ]),
+    tags: PropTypes.oneOfType([
+      PropTypes.array,
+      PropTypes.object,
+      PropTypes.element,
+    ]),
   };
   static defaultProps = {
     articles: [],
+    tags: [],
   };
 
   constructor(props) {
@@ -27,14 +33,6 @@ export default class ArticleList extends Component {
     this.setState({
       filterTag: selectedTag,
     });
-  };
-
-  getPossibleTags = (articles) => {
-    const tagsList = [];
-    articles.forEach((el) => {
-      tagsList.push(...el.tags);
-    });
-    return [...new Set(tagsList)];
   };
 
   createArticle = (articles) => {
@@ -52,12 +50,12 @@ export default class ArticleList extends Component {
   createFilterArticle = articles => this.createArticle(this.filterArticle(articles));
 
   render() {
-    const { articles } = this.props;
+    const { articles, tags } = this.props;
     return (
       <div className={style.container}>
         <div className={style.tagContainer}>
           <TagCloud
-            tags={this.getPossibleTags(articles)}
+            tags={tags}
             tagHandler={this.onFilterArticles}
           />
         </div>

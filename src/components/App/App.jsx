@@ -5,7 +5,7 @@ import ScrollableBar from '../ScrollableBar/ScrollableBar';
 
 const App = props => (
   <div>
-    <ScrollableBar>
+    <ScrollableBar place="top">
       <header className={style.header}>
         <Link to="/" className={style.link}>Awesome blog</Link>
       </header>
