@@ -7,3 +7,4 @@ To run app:
 - for bundle app: webpack is used
 - for routing: react-router v3.x.x
 - for Rest API: json-server
+- for create nice UI and layouts: CSS Modules, flexbox
